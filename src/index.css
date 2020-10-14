@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@font-face {
+  font-family: GooglesansBold;
+  src: url(./fonts/Google-Sans-Font/GoogleSans-Bold.ttf);
+}
+@font-face {
+  font-family: GooglesansMedium;
+  src: url(./fonts/Google-Sans-Font/GoogleSans-Medium.ttf);
+}
+@font-face {
+  font-family: GooglesansRegular;
+  src: url(./fonts/Google-Sans-Font/GoogleSans-Regular.ttf);
+}
+* {
+  font-family: GooglesansMedium !important;
+}
+body {
+  background-color: #EBF1F0;
+}

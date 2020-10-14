@@ -1,0 +1,152 @@
+
+#upgrade_button {
+    display: flex ;
+    justify-content: center ;
+}
+* {
+    font-family: GooglesansMedium;
+  }
+.main_plan_page {
+    padding: 10px 7px;
+}
+.counting_div {
+    padding: 10px 0px;
+    font-family: GooglesansMedium;
+}
+#upgrade_button button:disabled {
+    background-color: #FFD9C9;
+    color: #FF682B;
+}
+.swipe_card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+.swiping{
+    background-color: white;
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+.swiping .MuiPaper-elevation1 {
+    box-shadow: none !important;
+}
+.switch_button {
+    display: flex;
+    justify-content: center;
+}
+.switch_button .MuiToggleButton-root {
+    padding: 5px 40px !important;
+}
+.switch_first_button {
+    /* background-color: #FF682B !important; */
+}
+.MuiToggleButton-root.Mui-selected:hover {
+    background-color: #FF682B !important
+}
+.switch_second_button {
+    background-color: white !important;
+}
+.item_tag {
+    padding-left: 22px;
+}
+.upgradebutton{
+    background: #45A815 !important;
+    width: 100% ;
+    color: white !important;
+    border-radius: 8px !important;
+}
+.appnav {
+    background-color: #FF682B !important;
+}
+.confirm_plan_page{
+    display: flex;
+    padding: 5px 10px;
+    align-items: center;
+    color: white;
+    border-radius: 10px;
+    background-color: #C14310;
+}
+.confirm_plan_page p {
+    max-width: 70%;
+}
+.MuiGrid-spacing-xs-2 > .MuiGrid-item  {
+    padding: 0px !important;
+}
+.MuiGrid-spacing-xs-2 {
+    width: 100% !important;
+    margin: 0px !important;
+}
+.user_count {
+    background-color: #A73F15;
+    padding: 15px 30px;
+    border-radius: 11px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.user_count h4 {
+    margin: 0px !important;
+    font-size: 21px;
+}
+.user_count h6 {
+    margin: 0px !important;
+}
+.confirm_page{
+    margin: 10px;
+}
+.user_plans {
+    background-color: white;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+.sub_plans {
+    display: flex;
+    font-size: 14px;
+    justify-content: space-between;
+}
+.sub_plans input {
+    width: 18px;
+    text-align: center;
+}
+.sub_plans button {
+    border-radius: 50%;
+    width: 22px;
+    border: 1px solid grey;
+}
+.confirm_page .footer {
+    background-color: #C14310;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+    padding: 5px;
+}
+.confirm_page .checked {
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-top: 10px;
+}
+.toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.gst_input {
+    display: flex;
+    flex-direction: column;
+}
+.footer_button {
+    background-color: white;
+    padding: 10px;
+}
+.MuiToggleButton-root.Mui-selected label.focused {
+    color: green !important; 
+  }
+.switch_button .MuiToggleButton-root.Mui-selected {
+    background-color: #FF682B !important
+}

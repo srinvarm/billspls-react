@@ -1,19 +1,10 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
-import { BrowserRouter as Router, Route,Switch, Redirect} from 'react-router-dom'
-import { useHistory } from 'react-router-dom';
-import {
-  Paper,
-  Button,
-  Divider,
-  Tabs,
-  Tab,
-  TabPanel,
-  Box,
-  Grid,
-} from "@material-ui/core";
-import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import { useHistory } from "react-router-dom";
+import { Paper, Button, Divider, Box, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import Switch from "./Switch";
+import PlanCard from "../components/PlanCard";
 
 const useStyles = makeStyles({
   root: {
@@ -22,6 +13,10 @@ const useStyles = makeStyles({
   upgradebutton: {
     variant: "contained",
     background: "green",
+    background: "#45A815",
+    width: "100%",
+    color: "white"
+
   },
 });
 
@@ -51,10 +46,9 @@ function PlanDetails(props) {
         },
       ],
       tag: "₹ 70 / User / Month",
-      line: [
-        "upto 50 smart scans per user per month",
-        "Add unlimited Users",
-        "Approval Workflow and Integeration",
+      line: [{data:"upto 50 smart scans per user per month",id:1},
+        {data:"Add unlimited Users",id:2},
+       {data:"Approval Workflow and Integeration",id:3}
       ],
     },
     {
@@ -73,29 +67,21 @@ function PlanDetails(props) {
         },
       ],
       tag: "₹ 20 / User / Month",
-      line: [
-        "50 smart scans",
-        "Expires in 6 months after purchase",
-        "Distributed Equally to all the employees for business accounts",
+      line: [{data:
+        "50 smart scans",id:1},
+        {data:"Expires in 6 months after purchase",id:2},
+        {data:"Distributed Equally to all the employees for business accounts",id:3}
       ],
     },
   ];
 
-  
   return (
     <Box id="detailbox">
-      {/* <Grid container>
-        <Grid item xs={8}>
-          <h5>Swipe To explore</h5>
-        </Grid>
-        <Grid item={4}>
-          <HighlightOffIcon onClick={proceedHandler}/>
-        </Grid>
-      </Grid> */}
-
       <Carousel autoPlay={false} navButtonsAlwaysInvisible={true}>
         {items.map((item, i) => (
-          <Item key={i} item={item} />
+          <div className="swiping">
+            <Item key={i} item={item} />
+          </div>
         ))}
       </Carousel>
     </Box>
@@ -106,14 +92,29 @@ function Item(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(props.item);
   const history = useHistory();
-  const proceedHandler = () => history.push('/proceed');
-  
+  const proceedHandler = () => history.push("/proceed");
+
   return (
     <Paper className={classes.root}>
       <h3>{props.item.plan_name}</h3>
       <Divider light />
-    
-      <Button classes={classes.upgradebutton} onClick={proceedHandler}>Proceed</Button>
+      <Switch />
+      <div>
+        <h6 className="item_tag">
+         {props.item.tag}
+        </h6>
+        <ul className={classes.detail}>
+        {props.item.line.map((detail) => (
+          <li key={detail.id}>
+            <div>{detail.data}</div>
+          </li>
+        ))}
+        </ul>
+        <Grid item xs={12}></Grid>
+      </div>
+      <Button className="upgradebutton" onClick={proceedHandler}>
+        Proceed
+      </Button>
     </Paper>
   );
 }

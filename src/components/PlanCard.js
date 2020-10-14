@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import { Grid } from "@material-ui/core";
 import PlanDetails from "./PlanDetails";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
-
+import './plain.css'
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
@@ -55,6 +55,7 @@ const useStyles = makeStyles({
 });
 
 function PlanCard(props) {
+  console.log(props.plandetail)
   const classes = useStyles();
   const [planDetail, setPlanDetail] = useState(props.plandetail);
   const [mounted, setMounted] = useState(false);
@@ -71,7 +72,6 @@ function PlanCard(props) {
     setMounted(!mounted)
     setUpgradeDisable(!upgradeDisable)
   }
-
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent>
@@ -84,8 +84,8 @@ function PlanCard(props) {
         {
           <ul className={classes.detail}>
             {planDetail.line1.map((detail) => (
-              <li key={Math.floor(Math.random() * 100)}>
-                <Typography>{detail}</Typography>
+              <li key={detail.id}>
+                <Typography>{detail.data}</Typography>
               </li>
             ))}
           </ul>
@@ -93,7 +93,7 @@ function PlanCard(props) {
       </CardContent>
       <CardActions className={classes.actions}>
         <Grid container spacing={2} direction="row" justify="center">
-          <Grid item xs={12}>
+          <Grid item xs={12} id="upgrade_button">
             <Button
               className={classes.upgradeButton}
               onClick={toggle}
@@ -103,7 +103,7 @@ function PlanCard(props) {
             </Button>
           </Grid>
           <Grid item xs={12}>
-            <Grid container>
+            <Grid container className="swipe_card">
               <Grid item>
                 {mounted && <h5>Swipe To explore</h5>}
               </Grid>
