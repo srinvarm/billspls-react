@@ -1,0 +1,28 @@
+.account_image img{
+    width: 70px;
+  }
+.account_image {
+    display: flex;
+    justify-content: space-between;
+    margin: 14px 8px;
+    background-color: white;
+    padding: 3px 9px;
+    border-radius: 10px;
+}
+.accounting_heading {
+    margin: 14px 8px;
+    font-family: GooglesansMedium;
+
+}
+.rpa img {
+    width: 130px !important;
+}
+.api_key_button {
+    border: 1px solid #45A815 !important;
+    color: #45A815 !important;
+    background-color: white !important;
+    width: 100px !important;
+    font-size: 10px !important;
+    margin: 20px !important;
+    border-radius: 9px !important;
+}

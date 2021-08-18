@@ -1,152 +1,468 @@
-
 #upgrade_button {
-    display: flex ;
-    justify-content: center ;
+  display: flex;
+  justify-content: center;
 }
 * {
-    font-family: GooglesansMedium;
-  }
+  font-family: GooglesansMedium;
+}
 .main_plan_page {
-    padding: 10px 7px;
+  padding: 10px 7px;
 }
 .counting_div {
-    padding: 10px 0px;
-    font-family: GooglesansMedium;
+  padding: 10px 0px;
+  font-family: GooglesansMedium;
 }
 #upgrade_button button:disabled {
-    background-color: #FFD9C9;
-    color: #FF682B;
+  background-color: #ffd9c9;
+  color: #ff682b;
 }
 .swipe_card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-}
-.swiping{
-    background-color: white;
-    padding: 5px 15px;
-    border-radius: 10px;
-}
-.swiping .MuiPaper-elevation1 {
-    box-shadow: none !important;
-}
-.switch_button {
-    display: flex;
-    justify-content: center;
-}
-.switch_button .MuiToggleButton-root {
-    padding: 5px 40px !important;
-}
-.switch_first_button {
-    /* background-color: #FF682B !important; */
-}
-.MuiToggleButton-root.Mui-selected:hover {
-    background-color: #FF682B !important
-}
-.switch_second_button {
-    background-color: white !important;
-}
-.item_tag {
-    padding-left: 22px;
-}
-.upgradebutton{
-    background: #45A815 !important;
-    width: 100% ;
-    color: white !important;
-    border-radius: 8px !important;
-}
-.appnav {
-    background-color: #FF682B !important;
-}
-.confirm_plan_page{
-    display: flex;
-    padding: 5px 10px;
-    align-items: center;
-    color: white;
-    border-radius: 10px;
-    background-color: #C14310;
-}
-.confirm_plan_page p {
-    max-width: 70%;
-}
-.MuiGrid-spacing-xs-2 > .MuiGrid-item  {
-    padding: 0px !important;
-}
-.MuiGrid-spacing-xs-2 {
-    width: 100% !important;
-    margin: 0px !important;
-}
-.user_count {
-    background-color: #A73F15;
-    padding: 15px 30px;
-    border-radius: 11px;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
-.user_count h4 {
-    margin: 0px !important;
-    font-size: 21px;
-}
-.user_count h6 {
-    margin: 0px !important;
-}
-.confirm_page{
-    margin: 10px;
-}
-.user_plans {
-    background-color: white;
-    padding: 5px 10px;
-    margin-top: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-size: 19px;
+  font-family: GooglesansMedium;
 
 }
+.swiping {
+  background-color: white;
+  padding: 5px 15px;
+  border-radius: 10px;
+}
+.swiping .MuiPaper-elevation1 {
+  box-shadow: none !important;
+}
+.switch_button {
+  display: flex;
+  justify-content: center;
+}
+.switch_button .MuiToggleButton-root {
+  padding: 5px 40px !important;
+}
+.switch_button .MuiToggleButtonGroup-root {
+  width: 100% !important;
+}
+.Annually {
+  background-color: #FF682B !important;
+}
+.MuiToggleButton-root.Mui-selected:hover {
+  background-color: #ff682b !important;
+  color: white !important;
+}
+.switch_second_button {
+  background-color: white !important;
+}
+.month_anual {
+  width: 100%;
+}
+
+.upgradebutton {
+  background: #45a815 !important;
+  width: 100%;
+  color: white !important;
+  border-radius: 8px !important;
+  margin-bottom: 10px !important;
+}
+.appnav {
+  background-color: #ff682b !important;
+}
+.confirm_plan_page {
+  display: flex;
+  padding: 5px 10px;
+  align-items: center;
+  color: white;
+  border-radius: 10px;
+  background-color: #c14310;
+  margin-bottom: 20px;
+}
+.confirm_plan_page p {
+  max-width: 70%;
+    color: #FFFFFF;
+    font-size: 17px;
+  font-family: GooglesansRegular;
+
+}
+.MuiGrid-spacing-xs-2 > .MuiGrid-item {
+  padding: 0px !important;
+}
+.MuiGrid-spacing-xs-2 {
+  width: 100% !important;
+  margin: 0px !important;
+}
+.user_count {
+  background-color: #a73f15;
+  padding: 15px 30px;
+  border-radius: 11px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.user_count h4 {
+  margin: 0px !important;
+  font-size: 21px;
+}
+.user_count h6 {
+  margin: 0px !important;
+}
+.confirm_page {
+  margin: 10px;
+}
+.user_plans {
+  background-color: white;
+  padding: 5px 10px;
+  margin-top: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.user_plans hr {
+  background:#DADCE0;
+  margin-top: -2px;
+}
 .sub_plans {
-    display: flex;
-    font-size: 14px;
-    justify-content: space-between;
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+}
+.footer_button button {
+  width: 95% !important;
+}
+.sub_plans_p {
+  color: #62686D;
+  font-size: 12px;
+}
+.footer span {
+  font-size: 25px;
 }
 .sub_plans input {
-    width: 18px;
+    width: 28px;
     text-align: center;
+    height: 23px;
+    /* border: 1px solid #707070; */
+    border-radius: 4px;
 }
 .sub_plans button {
     border-radius: 50%;
-    width: 22px;
-    border: 1px solid grey;
+    width: 26px;
+    border: 1px solid #707070;
+    margin: 10px 8px;
+    color: black;
+    background-color: white;
+    font-size: 19px;
 }
 .confirm_page .footer {
-    background-color: #C14310;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    color: white;
-    padding: 5px;
+  background-color: #c14310;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: white;
+  padding: 5px;
+  align-items: center;
 }
 .confirm_page .checked {
-    background-color: white;
+  background-color: white;
     border-radius: 10px;
-    padding: 5px 10px;
-    margin-top: 10px;
-}
-.toggle {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 5px 10px 18px 10px;
+    margin: 10px 0px 70px 0px;
+    font-family: GooglesansRegular;
 
 }
-.gst_input {
-    display: flex;
+.toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.toggle p {
+  font-family: GooglesansRegular;
+    font-size: 14px;
+}
+.gst_input input{
+  display: flex;
     flex-direction: column;
+    border: 0;
+   
+    border-bottom: 1px solid #DADCE0;
+    color: #CCCCCC !important;
+    font-size: 12px;
+    width: 100%;
+    margin-top: 10px;
 }
 .footer_button {
-    background-color: white;
+  background-color: white;
     padding: 10px;
+    /* top: 0; */
+    /* bottom: auto; */
+    bottom: 0;
+    position: fixed;
+    /* width: 96%; */
+    width: 100%;
 }
 .MuiToggleButton-root.Mui-selected label.focused {
-    color: green !important; 
-  }
+  color: green !important;
+}
 .switch_button .MuiToggleButton-root.Mui-selected {
-    background-color: #FF682B !important
+  background-color: #ff682b !important;
+  color: white !important;
+}
+.CircularProgressbar {
+  width: 65% !important;
+    display: flex;
+    margin-left: auto;
+}
+.gst_input span {
+  margin-bottom: 8px;
+  font-family: GooglesansRegular;
+  font-size: 12px;
+  color: #62686D;
+
+}
+.users_decrement{
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*mess_Display*/
+
+#messDisplayBody {
+  background-color: #f3f3f3;
+  height: 100vh;
+  width: 100%;
+  padding-top: 50px;
+}
+
+#messageBody {
+  background-color: white;
+  color: black;
+  width: 500px;
+  height: 200px;
+  margin: 100px;
+  margin-top: 220px !important;
+  box-shadow: 0 0 10px rgba(97, 96, 96, 0.65);
+}
+
+#messageBody h4 {
+  color: black;
+  font-size: 24px;
+  margin: 20px;
+  margin-top: 60px !important;
+  text-align: center;
+  font-weight: bold;
+}
+
+#messageBody p {
+  color: black;
+  font-size: 20px;
+  margin: 20px;
+  text-align: center;
+}
+.modal-content {
+  background-color: white;
+  margin: 15px;
+  border-radius: 10px;
+  margin-top: 37%;
+}
+.upload {
+  /* padding: 20px 40px; */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: ProximaNovaB;
+}
+.upload p {
+  font-family: proximaNova;
+}
+
+@media only screen and (max-width: 600px) {
+  .signup_form {
+    width: 100% !important;
+    margin: auto;
+    padding: 20px;
+  }
+}
+.MuiOutlinedInput-input {
+  padding: 12px !important;
+  background-color: white !important;
+}
+.MuiOutlinedInput-inputMarginDense {
+  padding-top: 10.5px;
+  padding-bottom: 10.5px;
+}
+.MuiInputLabel-outlined {
+  margin-top: -5px;
+}
+.register-button {
+  width: 100%;
+  background-color: #45A815;
+  border: none;
+  height: 32px;
+  border-radius: 10px;
+  color: white;
+  margin: 10px;
+}
+.loader-wrapper {
+  flex: 1 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+  width: inherit;
+  margin-top: 50%;
+}
+.inside_loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.CircularProgressbar .CircularProgressbar-path {
+  stroke: #FF682B !important;
+  stroke-width: 5px;
+}
+.pendingcount .jss13 {
+  height: auto !important;
+}
+.pendingcount .makeStyles-cardcontent-13 {
+  height: auto !important;
+}
+.pendingcount .MuiGrid-spacing-xs-2 > .MuiGrid-item {
+  /* padding: 5px !important; */
+  margin-right: -25px;
+}
+.footer_button button:disabled {
+  background-color: gray !important;
+}
+
+
+
+/* Bittom Modal.js */
+.cancel_button {
+  border: 1px solid #45A815 !important;
+  color: #45A815 !important ;
+  background-color: white !important;
+  width: 140px !important;
+}
+.dontcancel_button {
+  background-color: #45A815 !important;
+  color: white !important;
+  border: none;
+  width: 140px !important;
+}
+.bottom_modal_buttons{
+  display: flex;
+  justify-content: space-evenly;
+}
+.bottom_modal_data {
+  margin: 10px;
+}
+.bottom_modal_data h4 {
+  font-family: GooglesansBold;
+  font-size: 19px;
+}
+.bottom_modal_data p {
+  font-size: 15px;
+  color: #565B60;
+  font-family: GooglesansRegular;
+}
+.react-modal-sheet-container {
+  border-radius: 1px !important;
+  box-shadow: none !important;
+}
+
+
+
+/* plancard.js */
+.plancard {
+  font-family: GooglesansMedium ;
+  color: white;
+  font-size: 23px;
+
+}
+
+.plancard_tag {
+  font-family: GooglesansMedium;
+  color: white;
+  font-size: 15px !important;
+}
+.plancard_details {
+  font-family: GooglesansRegular !important;
+  font-size: 13px !important;
+}
+
+/* pendingcount */
+.pending {
+  font-size: 14px;
+  font-family: GooglesansMedium;
+
+}
+.pending_text {
+  font-family: GooglesansBold;
+font-size: 18px;
+width: 165px;
+}
+.pending_count_box {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+.corasal ul{
+  margin-left: -20px;
+  color: #565B60;
+  font-size: 13px;
+  font-family: GooglesansRegular;
+  padding-bottom: 10px;
+
+}
+.item_tag {
+  font-size: 17px;
+  padding-top: 14px;
+  font-family: GooglesansBold;
+
+}
+.proceed_hr {
+  color: #D8D8D8 !important;
+  margin-top: -7px;
+}
+.users_number {
+  font-size: 60px;
+  color: #161616;
+}
+.view_invoice {
+  color: #FF682B !important;
+  background: none;
+  text-decoration: underline !important;
+  font-size: 12px !important;
+  text-transform: none !important;
+  margin-bottom: 10px !important;
+  margin-right: auto !important;
+}
+.modal-backdrop {
+  display: none;
+}
+.makeStyles-table-18 {
+  min-width: 10px !important;
+}
+.path_image {
+  width: 100px;
 }

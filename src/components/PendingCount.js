@@ -1,69 +1,77 @@
-import React from 'react'
-import {Card,CardContent, Grid, Typography} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles';
-import 'react-circular-progressbar/dist/styles.css';
-import { CircularProgressbar,buildStyles } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
+import React,{useEffect} from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import "react-circular-progressbar/dist/styles.css";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+import Pathimage from '../Images/path.png';
+import { useDispatch,useSelector } from 'react-redux';
+// import {Admin_active_users,Available_plans} from '../Actions'
 
-const useStyles = makeStyles({
-  root: {   
-    minWidth: 275,
-    background: "#FFFFFF",
-  },
-  cardcontent: {
-    height: 168,
-  },
-  circularbar:{
-    path: '16px',
-  }
- 
-});
+function PendingCount({ pendingCount }) {
+const dispatch = useDispatch()
+  const {plans_available={}} = useSelector(({billspls})=>billspls)
+  const {activeusers={}} = useSelector(({indone})=>indone)
 
+  const data = Date.parse("2021-04-17T04:16:45.332246Z");
+  var s = new Date(data).toLocaleDateString("en-US");
+  console.log(s);
+  const today = new Date().toLocaleString();
+  console.log(today);
 
-function PendingCount(props) {
-    const classes = useStyles()
-    const credits_left = props.pendingCount.credits_left
-    const total_credits = props.pendingCount.total_credits
-    const progress_value = credits_left/total_credits
-    return (
-      <div>
-        <Card className={classes.root} variant="outlined">
-          <CardContent className={classes.cardcontent} color="textSecondary">
-            <Grid container spacing={2} direction="row" justify="center">
-              <Grid item xs={6}>
-                <Typography>Your Pending</Typography>
-                <Typography>{props.pendingCount.text}</Typography>
-              </Grid>
-              <Grid item xs={6}>
-              <CircularProgressbar value={progress_value*100} text={`${credits_left}/${total_credits}`}
-              styles={buildStyles({
-                // Rotation of path and trail, in number of turns (0-1)
-                rotation: 0.25,
-             
-                // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                strokeLinecap: 'butt',
-             
-                // Text size
-                textSize: '16px',
-             
-                // How long animation takes to go from one percentage to another, in seconds
-                pathTransitionDuration: 0.5,
-             
-                // Can specify path transition in more detail, or remove it entirely
-                // pathTransition: 'none',
-             
-                // Colors
-                pathColor: `rgba(255, 104, 43, ${progress_value})`,
-                textColor: '#161616',
-                trailColor: '#d6d6d6',
-                backgroundColor: '#3e98c7',
-              })} />
-              </Grid>
-            </Grid>
-          </CardContent>
-        </Card>
-      </div>
-    );
+console.log(plans_available)
+let user_data=""
+if (plans_available&&Object.keys(plans_available).length>0){
+  user_data=plans_available&&plans_available.map(function(item, i){
+    return item.user_type
+  })
+}
+  console.log(user_data)
+  console.log(activeusers.length)
+  const bussiness_user=user_data.indexOf("business") > -1
+  console.log(bussiness_user)
+  return (
+    <div className="pendingcount">
+      {bussiness_user&&bussiness_user?
+        <div className="pending_count_box">
+          <div>
+            {activeusers&&activeusers?
+            <div className="users_number">{activeusers.length}</div>
+            :""}
+            <div className="users_text">Number of Employees</div>
+          </div>
+          <img src={Pathimage} className="path_image"/>
+        </div>
+        :""}
+      {pendingCount && pendingCount !== undefined
+        ? pendingCount.data.map((item) => (
+            <div key={item.text} className="pending_count_box">
+              <div>
+                <div className="pending">Your Pending</div>
+                <div className="pending_text">{item.text}</div>
+              </div>
+              <div>
+                <CircularProgressbar
+                  value={(item.credits_left / item.total_credits) * 100}
+                  text={`${item.credits_left}/${item.total_credits}`}
+                  styles={buildStyles({
+                    rotation: 0.5,
+                    strokeLinecap: "butt",
+                    pathTransitionDuration: 0.5,
+                    pathColor: `#FF682B, ${
+                      item.credits_left / item.total_credits
+                    })`,
+                    textColor: "#161616",
+                    trailColor: "#d6d6d6",
+                    backgroundColor: "#FF682B",
+                    stroke: "#FF682B",
+                  })}
+                />
+              </div>
+            </div>
+          ))
+        : ""}
+    </div>
+  );
 }
 
-export default PendingCount
+export default PendingCount;

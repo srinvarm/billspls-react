@@ -19,11 +19,7 @@ const useStyles = makeStyles({
     margin: "0 2px",
     transform: "scale(0.8)",
   },
-  title: {
-    fontSize: 26,
-    alignContent: "left",
-    color: "#FFFFFF",
-  },
+  
 
   planname: {
     fontSize: 18,
@@ -47,6 +43,7 @@ const useStyles = makeStyles({
     background: "#FFFFFF",
     width: 302,
     innerHeight: 50,
+    fontSize:15
   },
   actions: {
     display: "flex",
@@ -60,9 +57,7 @@ function PlanCard(props) {
   const [planDetail, setPlanDetail] = useState(props.plandetail);
   const [mounted, setMounted] = useState(false);
   const [upgradeDisable, setUpgradeDisable] = useState(false);
-
   const bull = <span className={classes.bullet}>•</span>;
-
   const toggle = () => {
     setMounted(!mounted);
     setUpgradeDisable(!upgradeDisable);
@@ -73,21 +68,25 @@ function PlanCard(props) {
     setUpgradeDisable(!upgradeDisable)
   }
   return (
+    <div>
+    {planDetail&&planDetail?
     <Card className={classes.root} variant="outlined">
       <CardContent>
-        <Typography className={classes.title} color="textSecondary">
-          {planDetail.title}
-        </Typography>
-        <Typography className={classes.planname} color="textSecondary">
-          {planDetail.tag}
-        </Typography>
+      <div>
+          <div className="plancard">{planDetail.title}</div>
+          <div className="plancard_tag">{planDetail.tag}</div>
+          </div>
         {
-          <ul className={classes.detail}>
-            {planDetail.line1.map((detail) => (
-              <li key={detail.id}>
-                <Typography>{detail.data}</Typography>
+          <ul className={classes.detail} >
+          {planDetail?
+            <div>
+            {planDetail&&planDetail.line.map((detail) => (
+              <li key={detail}>
+                <Typography className="plancard_details">{detail}</Typography>
               </li>
             ))}
+            </div>
+            :""}
           </ul>
         }
       </CardContent>
@@ -99,7 +98,7 @@ function PlanCard(props) {
               onClick={toggle}
               disabled={upgradeDisable}
             >
-              UPGRADE TO PREMIUM
+              {planDetail.button}
             </Button>
           </Grid>
           <Grid item xs={12}>
@@ -116,7 +115,8 @@ function PlanCard(props) {
           </Grid>
         </Grid>
       </CardActions>
-    </Card>
+    </Card>:""}
+    </div>
   );
 }
 

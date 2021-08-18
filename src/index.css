@@ -24,7 +24,7 @@ code {
   src: url(./fonts/Google-Sans-Font/GoogleSans-Regular.ttf);
 }
 * {
-  font-family: GooglesansMedium !important;
+  font-family: GooglesansMedium ;
 }
 body {
   background-color: #EBF1F0;

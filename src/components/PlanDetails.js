@@ -1,11 +1,13 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import Carousel from "react-material-ui-carousel";
 import { useHistory } from "react-router-dom";
 import { Paper, Button, Divider, Box, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import Switch from "./Switch";
-import PlanCard from "../components/PlanCard";
-
+import Loader from '../components/Loader'
+import {Available_plans,Admin_active_users} from '../Actions'
+import { useDispatch,useSelector } from 'react-redux';
+import { ToggleButton } from "@material-ui/lab";
+import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
@@ -15,106 +17,125 @@ const useStyles = makeStyles({
     background: "green",
     background: "#45A815",
     width: "100%",
-    color: "white"
+    color: "white",
+    marginBottom:"10px"
 
   },
 });
-
 function PlanDetails(props) {
-  var items = [
-    {
-      planid: 7,
-      plan_name: "Personal Premium",
-      cost: 70.0,
-      currency_type: "INR",
-      user_type: "business",
-      period: 30,
-      channel: "GEN",
-      send_notofication: false,
-      services_available: [
-        {
-          service_name: "download",
-          max_credits: 100000,
-        },
-        {
-          service_name: "extraction",
-          max_credits: 50,
-        },
-        {
-          service_name: "approval_workflow",
-          max_credits: 1,
-        },
-      ],
-      tag: "₹ 70 / User / Month",
-      line: [{data:"upto 50 smart scans per user per month",id:1},
-        {data:"Add unlimited Users",id:2},
-       {data:"Approval Workflow and Integeration",id:3}
-      ],
-    },
-    {
-      planid: 8,
-      plan_name: "Business Smart Scan Pack",
-      cost: 20.0,
-      currency_type: "INR",
-      user_type: "business",
-      period: 120,
-      channel: "GEN",
-      send_notofication: false,
-      services_available: [
-        {
-          service_name: "extraction",
-          max_credits: 50,
-        },
-      ],
-      tag: "₹ 20 / User / Month",
-      line: [{data:
-        "50 smart scans",id:1},
-        {data:"Expires in 6 months after purchase",id:2},
-        {data:"Distributed Equally to all the employees for business accounts",id:3}
-      ],
-    },
-  ];
-
+const dispatch = useDispatch()
+  const {plans_loader=false,plans_available={}} = useSelector(({billspls})=>billspls)
+  // useEffect(() => {
+  //     dispatch(Available_plans())
+  // }, [])
+  const style={
+    marginTop:"10%",
+    color:"white",
+  }
   return (
     <Box id="detailbox">
+    <div className="signup_data1">
+    {plans_available&&Object.keys(plans_available).length>0?
       <Carousel autoPlay={false} navButtonsAlwaysInvisible={true}>
-        {items.map((item, i) => (
+        {plans_available.map((item, i) => (
           <div className="swiping">
             <Item key={i} item={item} />
           </div>
         ))}
       </Carousel>
+      :<Loader msg="Please wait..." style={style} />}
+      </div>
     </Box>
   );
 }
 
 function Item(props) {
+const dispatch = useDispatch()
   const classes = useStyles();
-  const [value, setValue] = React.useState(props.item);
   const history = useHistory();
-  const proceedHandler = () => history.push("/proceed");
-
+  const [alignment, setAlignment] = React.useState("Monthly");
+  const handleAlignment = (event, newAlignment) => {
+    setAlignment(newAlignment);
+  };
+  const proceedHandler = async () => {
+  dispatch(Admin_active_users((cb)=> {
+    if (cb) {
+      if (props.item&&props.item.annual&&alignment==="Annually"){
+        history.push({pathname:"/proceed",state: { message: props.item.annual }})
+      }else if (props.item&&props.item.plan_name==="enterprise") {
+        window.open("https://in-d.ai/get-started/", "_blank")
+      }
+      else {
+        history.push({pathname:"/proceed",state: { message: props.item }})
+      }
+    }
+  }));
+  };
+  console.log(props.item)
+  console.log(props.item.annual)
   return (
     <Paper className={classes.root}>
-      <h3>{props.item.plan_name}</h3>
-      <Divider light />
-      <Switch />
-      <div>
-        <h6 className="item_tag">
-         {props.item.tag}
-        </h6>
+    {props.item&&props.item?
+    <div>
+      <h3>{props.item.name}</h3>
+      <hr className="proceed_hr"/>
+      <div className="switch_button">
+      {props.item.annual_flag ? (
+        <ToggleButtonGroup
+          value={alignment}
+          exclusive
+          onChange={handleAlignment}
+          aria-label="text alignment"
+        >
+          <ToggleButton
+            value="Monthly"
+            aria-label="centered"
+            className="switch_first_button"
+          >
+            <div>Monthly</div>
+          </ToggleButton>
+          <ToggleButton
+            value="Annually"
+            aria-label="left aligned"
+            className="switch_second_button"
+          >
+            <div>Annually</div>
+          </ToggleButton>
+        </ToggleButtonGroup>
+      ) : (
+        ""
+      )}
+    </div>
+      <div className="corasal">
+        <div className="item_tag">
+        {alignment==="Annually"&&props.item&&props.item.annual?
+        <div>₹{props.item.annual.cost}</div>
+        :<div>{props.item.tag}</div>}
+        </div>
         <ul className={classes.detail}>
         {props.item.line.map((detail) => (
-          <li key={detail.id}>
-            <div>{detail.data}</div>
+          <li key={detail}>
+            <div>{detail}</div>
           </li>
         ))}
         </ul>
         <Grid item xs={12}></Grid>
       </div>
+      {props.item.plan_name==="business_premium"?
       <Button className="upgradebutton" onClick={proceedHandler}>
         Proceed
       </Button>
+      :props.item.plan_name==="business_smart_scan_pack"?
+      <Button className="upgradebutton" onClick={proceedHandler}>
+        BUY NOW
+      </Button>:props.item.plan_name==="enterprise"?
+      <Button className="upgradebutton" onClick={proceedHandler}>
+      SCHEDULE A CALL
+    </Button>:""
+    }
+      </div>
+      :""}
+      
     </Paper>
   );
 }
